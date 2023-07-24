@@ -1,10 +1,19 @@
+import NavBar from "./components/shared/NavBar";
+import Footer from "./components/shared/Footer";
+import  ItemList  from "./components/ItemList/ItemList";
 
 function App() {
 
   return (
-    <div className="bg-red-400">
-      Hello World!
+
+    <div >
+
+      <NavBar />
+      <ItemList />
+      <Footer />
+
     </div>
+
   )
 }
 
