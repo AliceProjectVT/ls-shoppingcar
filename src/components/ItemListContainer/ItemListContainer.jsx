@@ -1,28 +1,39 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
+import ItemList from "../ItemList/ItemList"
+import { useParams } from "react-router-dom"
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { dataBase } from "../../service/config";
-import ItemList from "../ItemList/ItemList";
+
+
 
 const ItemListContainer = () => {
-    const [productos, setProductos] = useState([]);
+  const [productos, setProductos] = useState([]);
+  const { idCategoria } = useParams();
 
-    useEffect(() => {
-        const misProductos = query(collection(dataBase, "productos"));
+  useEffect(() => {
+    const misProductos = idCategoria ? query(collection(dataBase, "productos"), where("idCat", "==", idCategoria)) : collection(dataBase, "productos");
 
-        getDocs(misProductos)
-            .then(respuesta => {
-                setProductos(respuesta.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }, [])
+    getDocs(misProductos)
+      .then(res => {
+        const nuevosProductos = res.docs.map(doc => {
+          const data = doc.data()
+          return { id: doc.id, ...data }
+
+        })
+        setProductos(nuevosProductos);
+      })
+      .catch(error => console.log(error))
+
+
+  }, [idCategoria])
 
   return (
-    <>  
-         <ItemList productos={productos} />
-    </>
-  )
-}
+    <>
+      <ItemList productos={productos}
 
-export default ItemListContainer
+      />
+    </>
+  );
+};
+
+export default ItemListContainer;

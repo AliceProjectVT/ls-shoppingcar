@@ -1,10 +1,10 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore} from "firebase/firestore"
+import { getFirestore } from "firebase/firestore"
 
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyCWFp8KUdQbuf1S4R6U69oTumypNcNag9c",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
 
   authDomain: "sombrererostore-cdd18.firebaseapp.com",
 
