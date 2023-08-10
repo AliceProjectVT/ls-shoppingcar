@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react"
-import { dataBase } from "../../service/config"
-import { collection, addDoc } from "firebase/firestore"
+import React from "react"
 
 
 

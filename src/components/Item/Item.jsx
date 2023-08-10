@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
+import { Link } from 'react-router-dom';
 import { CarritoContext } from "../../context/CarritoContext";
 
-const Item = ({ nombre, precio, stock }) => {
+const Item = ({ id, nombre, precio, stock }) => {
   const stockDisponible = stock > 0;
   const { onAddProduct } = useContext(CarritoContext);
 
   const clickBoton = () => {
-    const producto = { nombre, precio, stock };
+    const producto = { id, nombre, precio, stock };
     onAddProduct(producto);
     console.log(producto);
   };
@@ -33,8 +34,9 @@ const Item = ({ nombre, precio, stock }) => {
         Agregar
       </button>
 
-      <button className="btn btn-black ">
-        Detalles
+      {/* Enlace "Detalles" */}
+      <button className="btn btn-black">
+        <Link to={`/detalles/${id}`}> Detalles </Link>
       </button>
     </div>
   );
