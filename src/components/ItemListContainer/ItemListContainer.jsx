@@ -1,30 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
-import { dataBase } from "../../service/config";
-import ItemList from "../ItemList/ItemList";
+import ItemList from "../ItemList/ItemList"
+import { collection, getDocs, query, where } from "firebase/firestore"
+import { db } from "../../firebase/config"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+
 
 const ItemListContainer = () => {
-    const [productos, setProductos] = useState([]);
-    const { idCategoria } = useParams();
+  const [productos, setProductos] = useState([]);
+  const categoria = useParams().categoriae;
 
-    useEffect(() => {
-        const fetchProductos = async () => {
-            const productosCollection = collection(dataBase, "productos");
-            const productosSnapshot = await getDocs(productosCollection);
-            const productosData = productosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            setProductos(productosData);
-        };
 
-        fetchProductos();
-    }, [idCategoria]);
+  useEffect(() => {
 
-    return (
-        <div>
-            <h2>Productos</h2>
-            <ItemList productos={productos} />
-        </div>
-    );
-};
+    const productosRef = collection(db, "productos");
+    const q = categoria ? query(productosRef, where("categoria", "==", categoria)) : productosRef;
 
-export default ItemListContainer;
+    getDocs(q)
+      .then((resp) => {
+
+        setProductos(
+          resp.docs.map((doc) => {
+            return { ...doc.data(), id: doc.id }
+
+          })
+        )
+      })
+
+  }, [categoria])
+  return (
+    <div>
+      <ItemList productos={productos} />
+    </div>
+  )
+}
+
+export default ItemListContainer

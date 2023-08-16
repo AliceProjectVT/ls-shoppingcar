@@ -1,36 +1,40 @@
-import NavBar from "./components/shared/NavBar";
-import Footer from "./components/shared/Footer";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Checkout from "./components/Checkout/Checkout";
-import { CarritoProvider } from "./context/CarritoContext";
-import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 
+import { Route, Routes, BrowserRouter } from "react-router-dom"
+import NavBar from "./components/shared/NavBar"
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import Nosotros from "./components/Nosotros/Nosotros";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer"
+import { useState } from "react";
+import { CartContext } from "./context/CartContext"
 
 function App() {
 
+  const [carrito, setCarrito] = useState([]);
+
+
+
+
+
   return (
+    <div>
+      <div>
+        <CartContext.Provider  value= {{carrito, setCarrito}}  >
+          <BrowserRouter>
+            <NavBar />
+            <Routes>
+              
+            
+              <Route path="/" element={<ItemListContainer />} />
+              <Route path="/categoria/:categoria" element={<ItemListContainer />} />
+              <Route path="/nosotros" element={<Nosotros />} />
+              <Route path="/item/:id" element={<ItemDetailContainer />} />
 
-    < >
-
-      <BrowserRouter>
-        <CarritoProvider >
-          <NavBar />
-          <Routes>
-
-            <Route exact path="/" element={<ItemListContainer />} />
-            <Route path="/categoria/:idCategoria" element={<ItemListContainer />} />
-            <Route path="checkout" element={<Checkout />} />
-            <Route path="detalles/:id" element={<ItemDetailContainer />} />
-
-          </Routes>
-          <Footer />
-        </CarritoProvider>
-      </BrowserRouter>
-
-    </>
-
-  )
+            </Routes>
+          </BrowserRouter>
+        </CartContext.Provider>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

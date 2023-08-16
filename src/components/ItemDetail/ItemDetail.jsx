@@ -1,41 +1,55 @@
-import React, { useContext } from "react";
-import { CarritoContext } from "../../context/CarritoContext";
+import React, { useContext, useState } from 'react'
+import ItemCount from '../ItemCount/ItemCount';
+import { CartContext } from "../../context/CartContext"
 
-const ItemDetail = ({ detalles }) => {
-  const stockDisponible = detalles.stock > 0;
-  const { onAddProduct } = useContext(CarritoContext);
+const ItemDetail = ({ item }) => {
 
-  const clickBoton = () => {
-    const producto = { nombre: detalles.nombre, precio: detalles.precio, stock: detalles.stock };
-    onAddProduct(producto);
-    console.log(producto);
-  };
+
+  const { carrito, setCarrito } = useContext(CartContext);
+  console.log(carrito)
+  const [cantidad, setCantidad] = useState(1);
+
+
+  const handleRestar = () => {
+    cantidad > 1 && setCantidad(cantidad - 1)
+
+  }
+
+
+  const handleSumar = () => {
+    cantidad < item.stock && setCantidad(cantidad + 1)
+
+  }
+
+  const handleAgregar = () => {
+
+    const itemAgregado = { ...item, cantidad };
+    //agregar Toastify
+    const estaEnElCarro =carrito.find(producto => producto.id === itemAgregado.id)
+    if (estaEnElCarro) {
+      console.log("está en el carro")
+    } else {
+      console.log("No Está")
+    }
+
+    setCarrito([...carrito, itemAgregado])
+  }
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="w-full max-w-md p-4 border shadow-lg text-center">
-        <h3 className="text-xl font-semibold mb-2">{detalles.nombre}</h3>
-        <img className="w-full mb-4" src="#" alt={`${detalles.nombre}`} />
-        <p className="mb-2">Precio: ${detalles.precio}</p>
-        <p className="mb-4">
-          {stockDisponible
-            ? detalles.stock === 1
-              ? 'Ultimo en Stock!'
-              : detalles.stock <= 5
-              ? `Quedan solo ${detalles.stock}`
-              : `Disponible ${detalles.stock} unidades`
-            : 'Agotado'}
-        </p>
-        <button
-          onClick={clickBoton}
-          className={`btn btn-green ${stockDisponible ? '' : 'opacity-50 cursor-not-allowed'}`}
-          disabled={!stockDisponible}
-        >
-          Agregar
-        </button>
-      </div>
-    </div>
-  );
-};
+    <div>
 
-export default ItemDetail;
+      <h1>{item.nombre}</h1>
+      <ItemCount
+        handleRestar={handleRestar}
+        cantidad={cantidad}
+        handleSumar={handleSumar}
+        handleAgregar={handleAgregar}
+      />
+
+
+
+    </div>
+  )
+}
+
+export default ItemDetail
