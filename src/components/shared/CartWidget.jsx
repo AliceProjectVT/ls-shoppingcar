@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import CartShow from "./CartShow";
+import { CartContext } from "../../context/CartContext";
 
 export const CartWidget = () => {
   const [mostrarCarro, setMostrarCarro] = useState(false);
+  const {cantidadEnCarrito} = useContext(CartContext)
 
   function mostrarOcultar() {
     setMostrarCarro(!mostrarCarro);
@@ -10,7 +12,7 @@ export const CartWidget = () => {
 
   return (
     <div className="container-icon ">
-      <div className="container-cart-icon text-white" onClick={mostrarOcultar}>
+      <div className="container-cart-icon " onClick={mostrarOcultar}>
         {/* Cambiamos el icono según el estado de 'mostrarCarro' */}
         {mostrarCarro ? (
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-x-fill" viewBox="0 0 16 16">
@@ -26,7 +28,7 @@ export const CartWidget = () => {
              1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
           </svg>
           <div className="count-products">
-          <span id="contador-productos" > 10 </span>
+          <span id="contador-productos" > {cantidadEnCarrito()} </span>
           </div>
 
          </>
