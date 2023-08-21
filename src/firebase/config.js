@@ -2,21 +2,39 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"
 
 
+// const firebaseConfig = {
+
+//   apiKey: 
+
+//   authDomain: "sombrererostore-cdd18.firebaseapp.com",
+
+//   projectId: "sombrererostore-cdd18",
+
+//   storageBucket: "sombrererostore-cdd18.appspot.com",
+
+//   messagingSenderId: "499838903794",
+
+//   appId: "1:499838903794:web:4871799fac0555960ef76b"
+
+// };
+
 const firebaseConfig = {
 
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
 
-  authDomain: "sombrererostore-cdd18.firebaseapp.com",
+  authDomain: "chirimoyasa100.firebaseapp.com",
 
-  projectId: "sombrererostore-cdd18",
+  projectId: "chirimoyasa100",
 
-  storageBucket: "sombrererostore-cdd18.appspot.com",
+  storageBucket: "chirimoyasa100.appspot.com",
 
-  messagingSenderId: "499838903794",
+  messagingSenderId: "7922704913",
 
-  appId: "1:499838903794:web:4871799fac0555960ef76b"
+  appId: "1:7922704913:web:53729229d2d031596e47b0"
 
 };
+
+
 
 
 

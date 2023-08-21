@@ -2,18 +2,14 @@
     margin: 0;
     padding: 0;
 }
-/* header {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px 0 40px 0;
-} */
+
 
 .container-icon{
     position: relative;
 }
 
-.count-products{
-   
+.contador-productos{
+    position: absolute;
     top: 55%;
     right: 0;
 
@@ -33,7 +29,7 @@
 }
 
 .container-cart-products{
-   
+    position: absolute;
     top: 50px;
     right: 0;
 
@@ -104,11 +100,9 @@
     font-weight: 900;
 }
 
-
-/* 
 .hidden-cart{
     display: none;
-} */
+}
 
 
 /* header {
@@ -126,82 +120,6 @@ header h1 {
     background-color: rgba(0, 0, 0, 0.8);
 
 } */
-/* 
-.contenedor {
-    max-width: 1200px;
-    padding: 10px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    contain: paint;
-}
-
-.contenedor .contenedor-producto {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    grid-gap: 30px;
-    grid-row-gap: 30px;
-    width: 70%;
-    transition: .2s;
-}
-
-.contenedor .contenedor-producto .producto {
-    max-width: 200px;
-    padding: 10px;
-    margin: auto;
-    border: 1px solid black;
-    border-radius: 20px;
-    padding: 20px;
-    transition: .2s;
-
-}
-
-.contenedor-producto .producto:hover {
-    box-shadow: 0 0 10px #666;
-    scale: 1.05
-}
-
-.contenedor-producto .producto .imagen-producto {
-    width: 150px;
-    height: 200px;
-}
-
-.contenedor-producto .producto .nombre-producto {
-    display: block;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.contenedor-producto .producto .precio-producto {
-    display: block;
-    text-align: center;
-    font-weight: bold;
-    font-size: 22px;
-
-}
-.contenedor-producto .producto .botones-activos{
-    display:flex;
-    align-items: center;
-}
-.contenedor-producto .producto .boton-producto {
-    display: block;
-    margin: 10px auto;
-    border: none;
-    background: black;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 2px;
-}
-.contenedor-producto .producto .boton-producto .link-sin-estilo{
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
-} */
-
 
 
 .carrito {
@@ -232,7 +150,7 @@ header h1 {
     border-bottom: 1px solid #666;
     padding: 20px;
 }
-.carrito .producto-carrito img{
+.carrito .producto-carrito .fotocarro{
     margin-right: 20px;
 }
 .carrito .producto-carrito .nombre-producto.carrito{

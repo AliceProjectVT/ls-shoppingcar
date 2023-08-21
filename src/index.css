@@ -34,25 +34,12 @@
     @apply bg-green-700 transform duration-500;
 }
 
-.contenedor {
-    @apply container h-full
-}
 
-.contenedor .contenedor-producto {
-    @apply m-10 flex justify-center flex-grow
-}
 
-.producto {
-    @apply flex-1 text-center max-w-xs rounded-lg overflow-hidden shadow-lg m-10 border border-black
-}
 
-.producto:hover {
-    @apply shadow-2xl duration-150
-}
 
-.img-prod {
-    @apply object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg
-}
+
+
 
 
 @keyframes gradient-rainbow {

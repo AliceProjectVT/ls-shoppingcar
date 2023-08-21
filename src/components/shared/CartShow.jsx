@@ -1,50 +1,64 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
-const CartShow = () => {
+const CartShow = ({ item }) => {
+  const { carrito, precioTotal, cantidad, setCantidad } = useContext(CartContext);
+
+  const btnMas = () => {
+    cantidad < item.stock && setCantidad(item.cantidad++);
+  };
+
   return (
-<div className={`container-cart-products `}>
-        
-        <>
-          <div className="row-product ">
-           
-              <div className="cart-product" >
-                <div className="info-cart-product">
-                  <span className="cantidad-producto-carrito">
-                    0
-                  </span>
-                  <p className="titulo-producto-carrito">Lulos</p>
-                  <span className="precio-producto-carrito">
-                   $1000
-                  </span>
-                </div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="icon-close"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+    <div className="carrito">
+      <div className="header-carrito ">
+      <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="icon-close"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        <h2>Carrito</h2>
+       
+      </div>
+        <div className="productos-carrito">
+          {carrito.map((prod) => (
+            <>
+              <div key={prod.id} className="producto-carrito">
+                <img className="fotocarro"  src={prod.imagen}  alt="" />
+                <p className="nombre-producto-carrito">{prod.nombre} </p>
+                <i className="bi bi-plus-circle"></i>
+                <span className="cantidad-producto-carrito">{prod.cantidad}</span>
+                <p className="selector-cantidad">-</p>
+                <p className="titulo-producto-carrito"></p>
+                <span className="precio-producto-carrito">${prod.precio * prod.cantidad}</span>
               </div>
-                       </div>
+            </>
+          ))}
+        </div>
+        <div>
+        
+        </div>
 
-          <div className="cart-total ">
-            <h3>Total: $200.000 </h3>
-            <span className="total-pagar"></span>
+      {carrito.length > 0 ? (
+        <>
+          <div className="total-carrito ">
+            <div className="fila">
+              <strong className="">Total:</strong>
+              <span className="precio-total-carrito">${precioTotal()}</span>
+            </div>
           </div>
           <button className="vaciar-carrito btn btn-green ">Vaciar Carrito</button>
-          <button  className='btn btn-green' > Ver Carrito</button>
+          <button className="btn btn-green"> Ver Carrito</button>
         </>
-       : (
+      ) : (
         <p className="cart-empty">El carrito está vacío</p>
-      )
-    </div>  )
-}
+      )}
+    </div>
+  );
+};
 
-export default CartShow
+export default CartShow;

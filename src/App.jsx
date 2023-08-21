@@ -4,8 +4,9 @@ import NavBar from "./components/shared/NavBar"
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Nosotros from "./components/Nosotros/Nosotros";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer"
-import {  CartProvider } from "./context/CartContext"
+import { CartProvider } from "./context/CartContext"
 import Carrito from "./components/Carrito/Carrito";
+import Contacto from "./components/Contacto/Contacto";
 
 function App() {
 
@@ -22,11 +23,11 @@ function App() {
               <Route path="/nosotros" element={<Nosotros />} />
               <Route path="/item/:id" element={<ItemDetailContainer />} />
               <Route path="/cart" element={<Carrito />} />
-
+              <Route path="/contacto" element={<Contacto />} />
             </Routes>
           </BrowserRouter>
-          </CartProvider>
-       
+        </CartProvider>
+
       </div>
     </div>
   );
