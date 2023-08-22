@@ -18,7 +18,7 @@ const ItemDetail = ({ item }) => {
 
   return (
     
-      <div className="border border-gray-300 p-4 rounded">
+      <div className="   border border-black p-4  rounded-xl">
         <h2 className="text-xl font-semibold mb-2">{item.nombre}</h2>
         <img height="200" width="200" src={item.imagen} alt="" />
         <p className=" text-lg mb-1">${item.precio} </p>

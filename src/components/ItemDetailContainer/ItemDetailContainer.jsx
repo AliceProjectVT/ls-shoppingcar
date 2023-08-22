@@ -16,7 +16,12 @@ const ItemDetailContainer = () => {
     });
   }, [id]);
 
-  return <div className="flex items-center justify-center min-h-screen">{item && <ItemDetail item={item} />}</div>;
+  return <div className="flex items-center justify-center m-10  max-w-3xl">
+    
+    {item && <ItemDetail item={item} />}
+    
+    </div>;
+
 };
 
 export default ItemDetailContainer;

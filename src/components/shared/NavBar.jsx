@@ -8,14 +8,11 @@ const NavBar = () => {
       <nav className="bg-gray-800 text-white py-4 ">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <h1 className="text-xl font-black">
-            <Link>LOGO</Link>
+            <Link to="/">LOGO</Link>
           </h1>
           <ul className="  flex space-x-4">
             <li className="liss">
               <Link to="/">Inicio</Link>
-            </li>
-            <li className="liss">
-              <Link to="/nosotros">Nosotros</Link>
             </li>
             <li className="liss">
               <Link to="/categoria/Abarrotes">Abarrotes</Link>
@@ -26,17 +23,6 @@ const NavBar = () => {
             <li className="liss">
               <Link to="/categoria/Frutas">Frutas</Link>
             </li>
-            <li className="liss">
-              {" "}
-              <Link to="/cart">Carrito</Link>{" "}
-            </li>
-            <li className="liss">
-              <a href="">Productos</a>
-            </li>
-            <li className="liss">
-              <Link to="/contacto">Contacto</Link>
-            </li>
-           
           </ul>
           <div className="">
             <CartWidget />

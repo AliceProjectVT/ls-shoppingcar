@@ -1,37 +1,25 @@
 import React from "react";
 import { useState } from "react";
-// import { useForm } from "react-hook-form";
+ import { useForm } from "react-hook-form";
 
 const Contacto = () => {
-  const [valores, setValores] = useState({
-    nombre:"",
-    email:""
-  });
+ 
+const {register, handleSubmit} = useForm();
+const enviar =(data) => {
+
+  console.log(data)
+}
   
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("enviado", valores)
-  };
-  
-
-
-  const handleValores =(e)=>{
-    setValores({...valores, 
-     [e.target.name]: e.target.value,
-      
-    })
-    e.target.value
-
-
-  }
   return (
-    <div>
-      <h1>Contact</h1>
-      <form onSubmit={handleSubmit} action="">
-        <input name="nombre" type="text" placeholder="Ingresa tu nombre" value={valores.nombre} onChange={handleValores} />
-        <input name="email" type="email" placeholder="Ingresa tu correo" value={valores.email} onChange={handleValores} />
-        <button>Enviar</button>
+    <div className="m-10 ">
+      <h2 className="text-4xl font-medium m-10">Contact</h2>
+      <form className="flex-col "onSubmit={handleSubmit(enviar)} >
+        <input className="flex border rounded-xl w-auto mb-5" type="text" placeholder="Ingresa tu nombre"  {...register("nombre")} />
+      
+        <input className="flex border rounded-xl w-auto mb-5" type="email" placeholder="Ingresa tu correo" {...register("e-mail")} />
+        <input className="flex border rounded-xl w-auto mb-5" type="phone" placeholder="Ingresa tu telefono" {...register("telefono")} />
+
+        <button className="  bg-blue-500 m-2 p-2  rounded-xl text-white font-bold">Enviar</button>
       </form>
     </div>
   );
