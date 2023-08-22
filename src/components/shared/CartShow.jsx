@@ -9,39 +9,36 @@ const CartShow = ({ item }) => {
   };
 
   return (
-    <div className="carrito">
+    <div className="  carrito">
       <div className="header-carrito ">
-      <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="icon-close"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="icon-close"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
         <h2>Carrito</h2>
-       
       </div>
-        <div className="productos-carrito">
-          {carrito.map((prod) => (
-            <>
-              <div key={prod.id} className="producto-carrito">
-                <img className="fotocarro"  src={prod.imagen}  alt="" />
-                <p className="nombre-producto-carrito">{prod.nombre} </p>
-                <i className="bi bi-plus-circle"></i>
-                <span className="cantidad-producto-carrito">{prod.cantidad}</span>
-                <p className="selector-cantidad">-</p>
-                <p className="titulo-producto-carrito"></p>
-                <span className="precio-producto-carrito">${prod.precio * prod.cantidad}</span>
-              </div>
-            </>
-          ))}
-        </div>
-        <div>
-        
-        </div>
+      <div className="productos-carrito">
+        {carrito.map((prod) => (
+          <>
+            <div key={prod.id} className="producto-carrito">
+              <img className="" src={prod.imagen} alt="" />
+              <p className="nombre-producto-carrito">{prod.nombre} </p>
+              <i className="bi bi-plus-circle"></i>
+              <span className="cantidad-producto-carrito">{prod.cantidad}</span>
+              <p className="selector-cantidad">-</p>
+              <p className="titulo-producto-carrito"></p>
+              <span className="precio-producto-carrito">${prod.precio * prod.cantidad}</span>
+            </div>
+          </>
+        ))}
+      </div>
+      <div></div>
 
       {carrito.length > 0 ? (
         <>

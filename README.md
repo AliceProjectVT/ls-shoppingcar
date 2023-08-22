@@ -27,3 +27,9 @@ añadirlos al carrito de compras y completar una compra devolviendo el número d
 3. Ejecuta el comando `npm install` para instalar las dependencias.
 4. Ejecuta el comando `npm run dev` para iniciar la aplicación.
 5. La terminal te proporcionará una dirección de Local Host que deberás abrir en tu navegador para ver la aplicación en funcionamiento.
+
+
+
+# Para ver la aplicación desplegada en Netlify, ve al siguiente enlace
+
+https://shimmering-basbousa-458f7b.netlify.app/

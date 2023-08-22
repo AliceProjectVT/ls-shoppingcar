@@ -11,8 +11,8 @@ export const CartWidget = () => {
   }
 
   return (
-    <div className="container-icon ">
-      <div className="container-cart-icon " onClick={mostrarOcultar}>
+    <div className=" relative ">
+      <div className="container-cart-icon  cursor-pointer " onClick={mostrarOcultar}>
         {mostrarCarro ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -41,8 +41,8 @@ export const CartWidget = () => {
              1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
               />
             </svg>
-            <div className="contador-productos flex-1">
-              <span id="count-products flex-1 "> {cantidadEnCarrito()} </span>
+            <div className="contador-productos mt-5 ">
+              <span id="count-products " className=""> {cantidadEnCarrito()} </span>
             </div>
           </>
         )}
@@ -50,8 +50,10 @@ export const CartWidget = () => {
         {/* Resto del contenido */}
       </div>
 
-      {/* Agregamos un bloque condicional para mostrar el contenido */}
+      <div className="absolute z-10">
       {mostrarCarro && <CartShow />}
+
+      </div>
     </div>
   );
 };
